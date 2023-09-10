@@ -1,0 +1,23 @@
+.headerContainer{
+    display: flex;
+    justify-content: space-between;
+    border:1px solid black;
+    align-items: center;
+}
+.logoIcon{
+    width:100px;
+    height:100px;
+}
+.navBarContainer ul{
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+    
+}
+.navBarContainer ul li{
+   margin-left: 15px;
+   margin-right: 15px;
+   list-style-type: none;
+   font-size: 1.3rem;
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
