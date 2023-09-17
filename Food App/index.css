@@ -25,6 +25,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    flex-direction: column;
+  
+}
+.restraContainerCard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
   
 }
 .restroCard{
@@ -123,4 +131,7 @@ font-size: 1rem;
 }
 .restroItems{
 font-size: 0.7rem;
+}
+.filter-btn{
+    margin: 10px;
 }

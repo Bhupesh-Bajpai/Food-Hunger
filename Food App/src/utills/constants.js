@@ -1,0 +1,1 @@
+export const LOGO_URL = "https://png.pngtree.com/element_our/png/20180930/food-icon-design-vector-png_120564.jpg"
