@@ -4,7 +4,9 @@ const RestraSwiggyContainer = (props) => {
         <div className="restroCard">
             <div className="imgCard">
                 <img className="imgLogo" src={data.info.image.url} />
-                <div className="text-container">80% OFF</div>
+                {data.bulkOffers && data.bulkOffers.length > 0 && (
+  <div className="text-container">{data.bulkOffers[0].text}</div>
+)}
             </div>
             <div className="restroDetails">
                 <div className="restroDetailsChild1">

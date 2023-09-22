@@ -2,7 +2,7 @@ const RestraContainer = (props) => {
     const { data } = props
     return (
         <div className="restroCard">
-            <div className="imgCard">
+            {/* <div className="imgCard">
                 <img className="imgLogo" src={data.info.image.url} />
                 <div className="text-container">80% OFF</div>
             </div>
@@ -31,7 +31,7 @@ const RestraContainer = (props) => {
                 </div>
 
 
-            </div>
+            </div> */}
 
         </div>
     )
