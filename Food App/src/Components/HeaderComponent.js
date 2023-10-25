@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { LOGO_URL } from "../utills/constants";
+
+import { Link } from "react-router-dom";
 const HeaderComponent = () => {
 console.log("render")
     return (    
@@ -9,10 +11,24 @@ console.log("render")
     </div>
     <div className="navBarContainer">
         <ul>
-            <li>Home</li>
-            <li>About us</li>
-            <li>Cart</li>
-            <li>Account</li>
+            <li>
+            <Link to="/">Home</Link>
+            </li>
+            <li>
+            <Link to="/about">About us</Link>
+            </li>
+            <li>
+            <Link to="/store">Store</Link>
+            </li>
+            <li>
+            <Link to="/contact">Cotact us</Link>
+            </li>
+            <li>
+            <Link>Account</Link>
+            </li>
+          
+        
+          
         </ul>
         <ButtonCom></ButtonCom>
        

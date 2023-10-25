@@ -1,27 +1,34 @@
 import RestraSwiggyContainer from "./RestraSwiggyContainer";
 import RestraContainer from "./RestraContainer";
 import {useState,useEffect} from "react"
-import { ColorRing} from  'react-loader-spinner'
+import { Link } from "react-router-dom";
+
+
 const BodyContainer = () => {
 
     const [listRestaurant ,setListRestaurant] = useState([])
-    const [listSearchRestaurant ,setListSearchRestaurant] = useState([])
+    const [listFilterRestaurant ,setListFilterRestaurant] = useState([])
 
     const [searchValue , setSearchValue] = useState("");
+
+
+   
+   
+    
 
     const filterRestra = () =>{
 
         const filterList = listRestaurant.filter((res)=>{
-        return res.info.rating.aggregate_rating > 4
+        return res.info.avgRating > 4
         })
-        setListRestaurant(filterList)
+        setListFilterRestaurant(filterList)
     }
 
     const searchRestraHandler = () =>{
       const searchRestaurant = listRestaurant.filter((res)=>{
         return res.info.name.includes(searchValue)
       });
-      setListSearchRestaurant(searchRestaurant)
+      setListFilterRestaurant(searchRestaurant)
     }
    
 
@@ -29,16 +36,19 @@ const BodyContainer = () => {
         fetchData();
     },[])
 
+    console.log("render")
+
     const fetchData = async () =>{
-        const data = await fetch("http://localhost:3000/restrData",{
-            method: "GET"
-        })
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
 
         //  optional chanining
         const json = await data.json()
-        setListRestaurant(json[0]['sections']['SECTION_SEARCH_RESULT'])
-        setListSearchRestaurant(json[0]['sections']['SECTION_SEARCH_RESULT'])
+        console.log(json)
+        setListRestaurant(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants)
+        setListFilterRestaurant(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants)
     }
+
+  
     const customWrapperStyle = {
         // Add your custom CSS styles here
         display: "flex", // Use flexbox
@@ -54,7 +64,7 @@ const BodyContainer = () => {
             <div className="restraCont1">
             <div className="search-box">
                 <input className="serach-input" type="text" value={searchValue} onChange={(e)=>{
-                  setSearchValue(e.target.value)
+                  setSearchValue(e.target.value);
                 }}/>
                 <button className="search-btn" onClick={searchRestraHandler}>Search</button>
               </div>
@@ -74,11 +84,13 @@ const BodyContainer = () => {
               ) : (
                 // Render the list of restaurants
                 <>
-                  {listSearchRestaurant.map((restaurant) => (
+                  {listFilterRestaurant.map((restaurant) => (
+                    <Link  key={restaurant.info.id} to={"/restramenu/"+restaurant.info.id}>
                     <RestraSwiggyContainer
-                      key={restaurant.info.resId}
+                     
                       data={restaurant}
                     />
+                    </Link>
                   ))}
                 </>
               )}

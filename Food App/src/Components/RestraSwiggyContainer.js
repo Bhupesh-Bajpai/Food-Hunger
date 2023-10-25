@@ -1,11 +1,13 @@
+import { IMG_CDN_URL } from "../utills/constants";
 const RestraSwiggyContainer = (props) => {
     const { data } = props
     return (
         <div className="restroCard">
             <div className="imgCard">
-                <img className="imgLogo" src={data.info.image.url} />
-                {data.bulkOffers && data.bulkOffers.length > 0 && (
-  <div className="text-container">{data.bulkOffers[0].text}</div>
+                <img className="imgLogo" src={IMG_CDN_URL+data.info.cloudinaryImageId} />
+                {data.info.aggregatedDiscountInfoV3
+ && data.info.aggregatedDiscountInfoV3.length > 0 && (
+  <div className="text-container">{data.info.aggregatedDiscountInfoV3[0]}</div>
 )}
             </div>
             <div className="restroDetails">
@@ -14,20 +16,20 @@ const RestraSwiggyContainer = (props) => {
                         {data.info.name}
                     </div>
                     <div className="restroItems">
-                        {data.info.cuisine.map(cuisine => (
-                            <span key={cuisine.name}>{cuisine.name+" "}</span>
+                        {data.info.cuisines.map(cuisine => (
+                        cuisine + " "
                         ))}
                     </div>
                 </div>
                 <div className="restroDetailsChild2">
                     <div className="restroRating">
-                        {data.info.rating.aggregate_rating} ⭐️
+                        {data.info.avgRating} ⭐️
                     </div>
                     <div className="restroCost">
-                        {data.info.costText.text}
+                        {data.info.costForTwo}
                     </div>
                     <div className="restroEta">
-                        {data.order.deliveryTime}
+                        {data.info.sla.slaString}
                     </div>
 
                 </div>
