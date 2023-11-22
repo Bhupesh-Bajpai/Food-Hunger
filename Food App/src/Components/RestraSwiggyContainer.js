@@ -40,4 +40,16 @@ const RestraSwiggyContainer = (props) => {
         </div>
     )
 };
+
+
+export const PromotedRestraCrad = (RestraSwiggyContainer) =>{
+    return (props) =>{
+        return (
+            <div>
+                <label>Promoted</label>
+                <RestraSwiggyContainer {...props}/>
+            </div>
+        )
+    }
+}
 export default RestraSwiggyContainer;
