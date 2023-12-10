@@ -2,8 +2,8 @@ import { IMG_CDN_URL } from "../utills/constants";
 const RestraSwiggyContainer = (props) => {
     const { data } = props
     return (
-        <div className="restroCard">
-            <div className="imgCard">
+        <div className="w-[250px] mh-6/12 flex flex-col m-3">
+            <div className="w-full h-full">
                 <img className="imgLogo" src={IMG_CDN_URL+data.info.cloudinaryImageId} />
                 {data.info.aggregatedDiscountInfoV3
  && data.info.aggregatedDiscountInfoV3.length > 0 && (

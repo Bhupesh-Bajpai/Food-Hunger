@@ -1,5 +1,13 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utills/Redux/cartSlice";
 import { IMG_CDN_URL } from "../utills/constants";
 const RestraMenuCardCategory  = ({menu}) =>{
+
+    const dispatch = useDispatch()
+
+    const handleAddItem = (item) =>{
+        dispatch(addItem(item))
+    }
     console.log(menu)
     return(
         <div>
@@ -13,7 +21,7 @@ const RestraMenuCardCategory  = ({menu}) =>{
                     <div className="flex w-3/12 h-full items-center justify-center ">
                     <img className="w-8/12 h-6/12 relative" src={IMG_CDN_URL+c.card.info.imageId} />
                       <div className="absolute w-20 h-8 mt-24 bg-white rounded flex justify-center items-center">
-                        <button className="text-green-500 ">
+                        <button className="text-green-500 " onClick={()=>handleAddItem(c)}>
                             Add
                         </button>
                         </div>

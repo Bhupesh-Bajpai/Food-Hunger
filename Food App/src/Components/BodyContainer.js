@@ -62,26 +62,29 @@ const BodyContainer = () => {
 
       return (
         <div>
-          <div className="restraContainer">
-            <div className="restraCont1">
-            <div className="search-box">
-                <input className="serach-input" type="text" value={searchValue} onChange={(e)=>{
+          <div className="w-full h-full flex flex-col">
+            <div className="w-full h-3/12 flex flex-row m-3 align-middle">
+            <div className="w-9/12 h-full flex flex-row">
+                <input className="w-10/12 border border-black-800" type="text" value={searchValue} onChange={(e)=>{
                   setSearchValue(e.target.value);
                 }}/>
-                <button className="search-btn" onClick={searchRestraHandler}>Search</button>
+                <button className="font-medium mx-5" onClick={searchRestraHandler}>Search</button>
               </div>
-              <div>
+              {/* <div>
                 <label> UserName</label>
                 <input className=" m-2 border border-black-2" value={loggedinUser} onChange={(e)=>{
                     setUserName(e.target.value)
                 }}></input>
-              </div>
-              <button className="filter-btn" onClick={filterRestra}>
+              </div> */}
+              <button className="w-3/12 h-full flex align-middle justify-center" onClick={filterRestra}>
+                <div className="w-5/12 h-full border border-black-800 bg-gray-950 text-white rounded-xl">
                 Best Restaurants
+                </div>
+               
               </button>
              
             </div>
-            <div className="restraContainerCard">
+            <div className="w-full h-full">
               {listRestaurant.length === 0 ? (
                 // Render a specified number of RestraContainer components
                 <>
@@ -91,15 +94,17 @@ const BodyContainer = () => {
                 </>
               ) : (
                 // Render the list of restaurants
-                <>
+                <div className="w-full h-full flex flex-row flex-wrap m-3">
                   {listFilterRestaurant.map((restaurant) => (
                     <Link  key={restaurant.info.id} to={"/restramenu/"+restaurant.info.id}>
 
-                    {restaurant.info.isOpen ? <PromotedRestraContainer data={restaurant}/> :  <RestraSwiggyContainer data={restaurant}/>}
+                    {/* {restaurant.info.isOpen ? <PromotedRestraContainer data={restaurant}/> :  <RestraSwiggyContainer data={restaurant}/>} */}
+
+                    <RestraSwiggyContainer data={restaurant}/>
                    
                     </Link>
                   ))}
-                </>
+                </div>
               )}
             </div>
           </div>
